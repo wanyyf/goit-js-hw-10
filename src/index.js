@@ -14,8 +14,9 @@ inputEl.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY));
 
 function onInputSearch() {
   const textValue = inputEl.value.trim();
-
+  if (textValue === '') return;
   fetchCountries(textValue).then(country => {
+    if (country === undefined) return;
     infoTextEl.innerHTML = '';
     listEl.innerHTML = '';
 
@@ -26,9 +27,7 @@ function onInputSearch() {
     }
     if (country.length === 1) {
       Notiflix.Notify.success('We find your country');
-
       const markupAll = fullInfo(country);
-      console.log(markupAll);
       infoTextEl.innerHTML = markupAll;
     }
     if (country.length > 1 && country.length < 10) {
