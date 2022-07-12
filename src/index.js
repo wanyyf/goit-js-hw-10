@@ -14,7 +14,11 @@ inputEl.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY));
 
 function onInputSearch() {
   const textValue = inputEl.value.trim();
-  if (textValue === '') return;
+  if (textValue === '') {
+    infoTextEl.innerHTML = '';
+    listEl.innerHTML = '';
+    return;
+  }
   fetchCountries(textValue).then(country => {
     if (country === undefined) return;
     infoTextEl.innerHTML = '';
