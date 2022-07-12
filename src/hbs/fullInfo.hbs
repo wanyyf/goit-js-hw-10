@@ -1,0 +1,16 @@
+{{#each this}}
+  <li>
+    <img src={{this.flags.svg}} alt={{this.name.official}} height="300" width="300"/>
+    <p style="font-size: 30px;">{{this.name.official}} </p>
+
+  </li>
+{{/each}} 
+
+{{#each this}}
+  </li>
+  <p><b> Capital:</b> {{this.capital}} </p>
+    <p><b> Population:</b> {{this.population}} </p>
+    <p><b> Languages:</b>
+    {{#each languages}}{{this}}{{#unless @last}},{{/unless}}
+    {{/each}} </p>
+{{/each}}
